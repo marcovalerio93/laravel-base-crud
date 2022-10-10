@@ -36,7 +36,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newFumetto = new Comic();
+
+        $newFumetto->title = $data['title'];
+        $newFumetto->description = $data['description'];
+        $newFumetto->thumb = $data['thumb'];
+        $newFumetto->price = $data['price'];
+        $newFumetto->series = $data['series'];
+        $newFumetto->sale_date = $data['sale_date'];
+        $newFumetto->type = $data['type'];
+        $newFumetto->save();
+
+        return redirect()->route('comics.index');
+
     }
 
     /**
@@ -47,7 +61,7 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

@@ -3,16 +3,20 @@
 @section('title', 'Crea nuovo fumetto')
 
 @section('content')
+
 <div class="container">
-    <form action="{{route('comics.store')}}"methods="POST">
+
+    <form action="{{route('comics.store')}}" method="POST">
+
         @csrf
+
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" name="tilte"/>
+          <input type="text" class="form-control" id="title" name="title"/>
         </div>  
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">description</label>
-            <textarea id="description" name="description" class="from-control"></textarea> 
+            <label for="exampleInputEmail1" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description"/>            
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">thumb</label>
