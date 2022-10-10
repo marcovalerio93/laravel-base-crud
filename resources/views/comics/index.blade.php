@@ -29,7 +29,7 @@
                         <td>{{$fumetto->series}}</td>
                         <td>{{$fumetto->sale_date}}</td>
                         <td>{{$fumetto->type}}</td>   
-                        <td><a class="btn btn-primary" href="{{route('comics.show', ['comic'=> $fumetto->id])}}">Vedi</a></td>                  
+                        <td><a class="btn btn-primary" href="{{route('comics.show', ['comic'=> $fumetto->id])}}">Vedi più informazioni</a></td>                  
                     </tr> 
                  @endforeach
             </tbody>  
