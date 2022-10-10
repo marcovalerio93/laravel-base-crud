@@ -5,6 +5,7 @@
 @section('content')
 <div class="container">
     <form action="{{route('comics.store')}}"methods="POST">
+        @csrf
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Title</label>
           <input type="text" class="form-control" id="title" name="tilte"/>
