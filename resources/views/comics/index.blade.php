@@ -29,7 +29,15 @@
                         <td>{{$fumetto->series}}</td>
                         <td>{{$fumetto->sale_date}}</td>
                         <td>{{$fumetto->type}}</td>   
-                        <td><a class="btn btn-primary" href="{{route('comics.show', ['comic'=> $fumetto->id])}}">Vedi più informazioni</a></td>                  
+                        <td>
+                            <a class="btn btn-primary" href="{{route('comics.show', ['comic'=> $fumetto->id])}}">Vedi più informazioni</a>
+                            <a class="btn btn-secondary" href="{{route('comics.edit', ['comic'=> $fumetto->id])}}">Modifica</a>
+                            <form action="{{route('comics.destroy', ['comic'=> $fumetto->id])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-warning">Elimina</button>
+                            </form>
+                        </td>                  
                     </tr> 
                  @endforeach
             </tbody>  

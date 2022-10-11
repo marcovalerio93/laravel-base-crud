@@ -40,13 +40,15 @@ class ComicController extends Controller
 
         $newFumetto = new Comic();
 
-        $newFumetto->title = $data['title'];
+        /*$newFumetto->title = $data['title'];
         $newFumetto->description = $data['description'];
         $newFumetto->thumb = $data['thumb'];
         $newFumetto->price = $data['price'];
         $newFumetto->series = $data['series'];
         $newFumetto->sale_date = $data['sale_date'];
-        $newFumetto->type = $data['type'];
+        $newFumetto->type = $data['type'];*/
+
+        $newFumetto->fill($data);
         $newFumetto->save();
 
         return redirect()->route('comics.index');
@@ -63,7 +65,13 @@ class ComicController extends Controller
     {
         $fumetto = Comic::find($id);
 
-        return view('comics.show', compact('fumetto'));
+        if ($fumetto){
+
+            return view('comics.show', compact('fumetto'));
+
+        }else{
+            abort(404);
+        }        
     }
 
     /**
@@ -74,7 +82,15 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fumetto = Comic::find($id);
+
+        if ($fumetto){
+
+            return view('comics.edit', compact('fumetto'));
+
+        }
+
+        abort(404);
     }
 
     /**
@@ -86,7 +102,22 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fumetto = Comic::find($id);
+
+        if ($fumetto){
+
+            $data = $request->all();
+
+            $fumetto->update($data);
+            $fumetto->save();
+
+            return redirect()->route('comics.show', ['comic' => $fumetto]);
+
+
+        } else{
+ 
+        abort(404); 
+        }
     }
 
     /**
@@ -97,6 +128,16 @@ class ComicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fumetto = Comic::find($id);
+
+        if ($fumetto){
+
+            $fumetto->delete();
+            return redirect()->route('comics.index');
+
+        } else{
+            abort(404);
+        }
+
     }
 }
