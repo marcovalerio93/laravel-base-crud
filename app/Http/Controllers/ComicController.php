@@ -35,7 +35,22 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
+
+        $request->validate(
+            [
+                'title'=>'required|max:55|min1',
+                'description'=>'nullable|max:1000|min:1',
+                'thumb'=>'required|max:255|min1',
+                'price'=>'required|max:25|min1',
+                'series'=>'required|max:100|min1',
+                'sale_date'=>'required|max:25|min1',
+                'type'=>'required|max:25|min1',
+
+            ]
+        ); 
+
         $data = $request->all();
 
         $newFumetto = new Comic();
@@ -105,6 +120,19 @@ class ComicController extends Controller
         $fumetto = Comic::find($id);
 
         if ($fumetto){
+
+            $request->validate(
+                [
+                    'title'=>'required|max:55|min1',
+                    'description'=>'nullable|max:1000|min:1',
+                    'thumb'=>'required|max:255|min1',
+                    'price'=>'required|max:25|min1',
+                    'series'=>'required|max:100|min1',
+                    'sale_date'=>'required|max:25|min1',
+                    'type'=>'required|max:25|min1',
+
+                ]
+            );
 
             $data = $request->all();
 
