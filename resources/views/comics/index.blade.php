@@ -32,7 +32,7 @@
                         <td>
                             <a class="btn btn-primary" href="{{route('comics.show', ['comic'=> $fumetto->id])}}">Vedi più informazioni</a>
                             <a class="btn btn-secondary" href="{{route('comics.edit', ['comic'=> $fumetto->id])}}">Modifica</a>
-                            <form action="{{route('comics.destroy', ['comic'=> $fumetto->id])}}" method="POST">
+                            <form action="{{route('comics.destroy', ['comic'=> $fumetto->id])}}" method="POST" onsubmit="return confirm('Vuoi cancelleare il fumetto?');">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-warning">Elimina</button>
